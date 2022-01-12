@@ -1,0 +1,180 @@
+
+/*********** login page *************/
+
+.login-title{
+   /* background-color: green; */
+    grid-area:login-title ;
+
+    padding: 0 20px;
+}
+
+
+.login-title h1{
+    color: #1877f2;
+    font-size: 4rem;  
+    margin: 15px;   
+}
+
+
+.login-title p{
+   
+    font-size: 1.5rem;     
+}
+
+
+
+.login-form{
+  /*  background-color: brown; */
+    grid-area:login-form ;
+    box-shadow: 0 2px 4px rgb(0 0 0/10%), 0 8px 16px rgb(0 0 0/20%);
+    margin: 0 20px;
+    width: 340px;
+    border-radius: 5%;
+    margin:  0 auto;
+}
+
+.login-form .form-row{
+    margin:5px 0 ;
+}
+
+
+
+.login-form .form-button .bt-login-submit{
+    background-color: #1877f2;
+    color:white ;
+    width:95% ;
+}
+
+
+
+.login-form .form-button .bt-login-create-account{
+    background-color: #42b72a;
+    color:white ;
+    width:70% ;
+}
+
+
+
+
+.login-form .form-infos p a{
+    text-decoration: none;
+    color: #1877f2;
+
+}
+
+
+.login-form .divider{
+    border: 0.1px solid grey;
+    width: 90%;
+    margin: 20px auto;
+}
+
+
+
+
+
+.login-form .form-row input{
+    height: 50px;
+    font-size: 1.2rem;
+    width: 95%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    
+}
+
+
+
+
+
+
+.login-footer{
+  /* background-color: blue; */
+    grid-area:login-footer ;
+    width:340px;
+    margin: 0 auto;
+    padding-top:30px ;
+}
+
+
+
+
+.login-footer a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+  
+
+
+
+
+/* Définir une grille de positionnement */
+.container-login{
+    display: grid;
+
+    text-align: center;
+
+    /* la grille occupe toute la hauteur de l'écran */
+    height: 100vh;
+
+    /* définir nombre de colonne */
+    grid-template-columns:1fr ;
+
+    /* définir nombre de lignes */
+    grid-template-rows:200px  360px 1fr;
+
+    /* préciser les endroits dont je veux disposer les éléments */
+    grid-template-areas:"login-title"  "login-form" "login-footer";
+}
+
+
+
+
+/************************** MEDIAS QUERIES **************/
+/* lorsque l'écran dépasse 900px version tablette et desktop */
+@media screen and (min-width:900px) {
+    
+    .container-login{
+
+        /* réduire la hauteur*/
+        height: 75vh;
+    
+        padding: 200px 50px;
+        /* définir nombre de colonnes */
+        grid-template-columns:1fr 1fr ;
+
+        /* définir nombre de lignes */
+        grid-template-rows:350px  200px;
+
+
+        /* préciser les endroits dont je veux disposer les éléments */
+        grid-template-areas:"login-title login-form" " none login-footer";
+    }
+
+
+
+    /* mettre  le bloc facebook et le paragraphe en bas à gauche */
+    .login-title{
+        text-align: left;
+    }
+
+
+    .login-form{
+        width: 400px;
+    }
+
+}
+
+
+/* empêcher le block facebook, paragraphe et le bloc connexion de s'élargir davantage */
+@media screen and (min-width:1450px) { /* au-dessus de 1450px */
+    .container-login{
+        
+        grid-template-columns:600px 400px;
+        justify-content: center;
+
+    }
+}
+
+

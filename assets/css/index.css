@@ -1,0 +1,424 @@
+header {
+  height: 80px;
+
+  /* Définir la zone*/
+  grid-area: header;
+
+  padding-left: 20px;
+  font-size: 2.3rem; /*2.3rem*/
+
+  display: flex;
+}
+
+#aside-left {
+  background-color: rgb(228, 156, 21);
+
+  /* Définir la zone*/
+  grid-area: aside-left;
+}
+
+#aside-right {
+  background-color: rgb(35, 55, 168);
+
+  /* Définir la zone */
+  grid-area: aside-right;
+}
+
+.content {
+  background-color: gold;
+
+  /* Définir la zone */
+  grid-area: content;
+}
+
+/* définir la grille */
+.container-home {
+  display: grid;
+
+  height: 100vh;
+
+  /* définir les colonnes*/
+  grid-template-columns: 1fr 3fr 1fr;
+
+  /* définir la lgne MAIS PAS OBLIGATOIRE CAR IL Y EN A QU'UNE SEULE
+    grid-template-rows: 1fr; */
+
+  /* définir la zone*/
+  grid-template-areas: "aside-left content aside-right";
+}
+
+/************* MENU ***********/
+/*  permet d'élargir */
+#header-left {
+  flex: 1;
+}
+
+/*  permet d'élargir */
+#header-right {
+  flex: 1;
+}
+
+/*  permet d'élargir */
+#header-center {
+  flex: 2;
+}
+
+/* Logo facebook */
+.logo img {
+  width: 20px; /* 50px c'est flou */
+}
+
+/* logo facebook, search-bar et les autres logos */
+#header-center,
+#header-left,
+#header-right,
+#header-right .user-infos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* input search-bar */
+#header-left input {
+  height: 40px; /* 40px*/
+  margin-left: 20px;
+  border-radius: 50px;
+  outline: none;
+  border: 1px solid #ccc;
+  width: 95%; /* 95% */
+  padding-left: 30px; /* 30px*/
+  position: relative;
+  bottom: 7px;
+}
+
+/* Elargir search-bar */
+#header-left .search-bar {
+  flex: 1;
+  position: relative;
+}
+
+#header-left .fa-search {
+  position: absolute;
+  font-size: 0.6em;  /* 0.6em*/
+  top: 13px;
+  left: 25px;
+  z-index: 2;
+  color: #ccc;
+}
+
+/* Elargir les icons */
+#header-center .header-icon {
+  flex: 0 1 80px; /* 0 1 100px */
+  text-align: center;
+  cursor: pointer;
+  padding: 5px; /*5px*/
+}
+
+#header-center .header-icon:hover {
+  background-color: #efefef;
+
+  border-radius: 10px; /*10px*/
+}
+
+#header-right > * {
+  flex: 1;
+}
+
+#header-right {
+  gap: 5px;
+}
+
+.header-icon img {
+  width: 15px; /* 20px*/
+}
+
+#header-right img {
+  border-radius: 20px; /*20px*/
+}
+
+#header-right .username {
+  color: gray;
+  font-size: 0.6em;
+}
+
+#header-right .header-icon img {
+  width: 10px; /* 14px*/
+  background-color: #ccc;
+  padding: 5px; /*10px*/
+}
+
+header .header-icon {
+  position: relative;
+}
+
+header .notification {
+  background-color: red;
+  padding: 5px; /* 5px*/
+  border-radius: 50px;
+  display: block;
+  width: 5px; /*  8px     18px*/
+  height: 5px; /*  8px            18px*/
+  text-align: center;
+  color: white;
+  font-size: 0.25em; /* 0.6*/
+  font-weight: bold;
+  position: absolute;
+}
+
+header #header-center .header-icon .notification {
+  bottom: 18px; /*30px*/
+  left: 40px; /*30px*/
+}
+
+header #header-right .header-icon .notification {
+  bottom: 20px; /*30px*/
+  left: 80px; /* 80px*/
+  z-index: 1;
+}
+
+/******** MEDIAS QUERIES *********/
+/* version desktop  de 900px à 1300px */
+@media screen and (min-width: 900px) and (max-width: 1300px) {
+  .container-home {
+    /* définir les colonnes*/
+    grid-template-columns: 3fr 1fr;
+
+    /* définir la zone*/
+    grid-template-areas: "content aside-right";
+  }
+
+  /* retirer aside-left */
+  #aside-left {
+    display: none;
+  }
+
+  /* retirer user-infos */
+  .user-infos {
+    display: none !important;
+  }
+
+  #header-left input {
+    width: 40px; /* 50px*/
+    height: 40px; /* 50px*/
+    cursor: pointer;
+  }
+
+
+  
+  #header-left input:hover {
+    width: 140px; /* 150px*/
+    padding-left: 35px;
+    font-size: 0.45rem;
+   
+  }
+
+
+
+
+
+
+  /* retirer placeholder */
+  #header-left input::placeholder{
+    visibility: hidden;
+  }
+
+  #header-left .fa-search {  
+    top: 13px;
+    left: 35px;
+    
+  }
+
+
+  /* retirer flex:1 */
+  #header-left{
+    flex: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* version tablette et mobile */
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .container-home {
+    /* définir 1 seule colonne*/
+    grid-template-columns: 1fr;
+
+    /* définir la zone content*/
+    grid-template-areas: "content";
+  }
+
+  /* retirer aside-left et aside-right */
+  #aside-left,
+  #aside-right {
+    display: none;
+  }
+
+
+  .container-home {
+    /* définir les colonnes*/
+    grid-template-columns: 3fr 1fr;
+
+    /* définir la zone*/
+    grid-template-areas: "content aside-right";
+  }
+  
+
+  /* retirer user-infos */
+  .user-infos {
+    display: none !important;
+  }
+
+  #header-left input {
+    width: 40px; /* 50px*/
+    height: 40px; /* 50px*/
+  }
+
+
+  /* retirer placeholder */
+  #header-left input::placeholder{
+    visibility: hidden;
+  }
+
+  #header-left .fa-search {  
+    top: 13px;
+    left: 35px;
+    
+  }
+
+
+  /* retirer flex:1 */
+  #header-left{
+    flex: none;
+  }
+  
+
+  /* retirer les icons */
+  #header-center .header-icon:nth-child(1),
+  #header-center .header-icon:nth-child(2),
+  #header-center .header-icon:nth-child(3),
+  #header-center .header-icon:nth-child(4),
+  #header-center .header-icon:nth-child(5){
+  
+    display: none;
+  }
+  
+
+
+
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px)  {
+  .container-home {
+    /* définir 1 seule colonne*/
+    grid-template-columns: 1fr;
+
+    /* définir la zone content*/
+    grid-template-areas: "content";
+  }
+
+  /* retirer aside-left et aside-right */
+  #aside-left,
+  #aside-right {
+    display: none;
+  }
+
+
+
+
+
+  .container-home {
+    /* définir les colonnes*/
+    grid-template-columns: 3fr 1fr;
+
+    /* définir la zone*/
+    grid-template-areas: "content aside-right";
+  }
+  
+
+  /* retirer user-infos */
+  .user-infos {
+    display: none !important;
+  }
+
+  #header-left input {
+    width: 40px; /* 50px*/
+    height: 40px; /* 50px*/
+  }
+
+
+  /* retirer placeholder */
+  #header-left input::placeholder{
+    visibility: hidden;
+  }
+
+  #header-left .fa-search {  
+    top: 13px;
+    left: 35px;
+    
+  }
+
+
+  /* retirer flex:1 */
+  #header-left{
+    flex: none;
+  }
+  
+
+  /* retirer les icons */
+  #header-center .header-icon:nth-child(1),
+  #header-center .header-icon:nth-child(2),
+  #header-center .header-icon:nth-child(3),
+  #header-center .header-icon:nth-child(4),
+  #header-center .header-icon:nth-child(5){
+  
+    display: none;
+  }
+  
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* version mobile */
+@media screen and (max-width: 600px) {
+  .container-home {
+    /* définir 1 seule colonne*/
+    grid-template-columns: 1fr;
+
+    /* définir la zone content*/
+    grid-template-areas: "content";
+  }
+
+  /* retirer aside-left et aside-right */
+  #aside-left,
+  #aside-right {
+    display: none;
+  }
+
+
+}
